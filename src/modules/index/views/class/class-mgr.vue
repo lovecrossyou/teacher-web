@@ -6,14 +6,14 @@
 
     <div class="desc">中小学教师邦中小学教师邦中小学教师邦中小学教师邦中小学教师邦中小学教师邦中小学教师邦中小学教师邦中小学教师</div>
 
-    <div class="qrcode"></div>
+    <img src="http://qnimage.xiteng.com/qrcode-default.jpg" class="qrcode"/>
 
     <div>教师二维码</div>
     <div>教师密码：133ter</div>
 
     <div class="btn">邀请加入</div>
 
-    <div class="qrcode"></div>
+    <img src="http://qnimage.xiteng.com/qrcode-default.jpg" class="qrcode"/>
 
     <div>教师二维码</div>
     <div>教师密码：133ter</div>
@@ -57,6 +57,7 @@ export default {
   width: 108px;
   height: 108px;
   background-color: aqua;
+  margin-top: 10px;
 }
 
 .btn {
