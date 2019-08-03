@@ -7,6 +7,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'class-mgr',
+      component: () => import('../views/class/class-mgr') // 路由懒加载
+    },
+    {
+      path: '/index',
       name: 'index',
       component: () => import('../views/home/list') // 路由懒加载
     },

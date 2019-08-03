@@ -46,7 +46,7 @@ export default {
 .border-line {
   border: dashed 1px #e1e1e1;
   margin-bottom: 10px;
-  padding: 10px;
+  /* padding: 10px; */
 
   display: flex;
   flex-direction: column;
