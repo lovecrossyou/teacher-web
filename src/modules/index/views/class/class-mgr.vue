@@ -56,7 +56,7 @@ export default {
 .qrcode {
   width: 108px;
   height: 108px;
-  background-color: aqua;
+  background-color: #e1e1e1;
   margin-top: 10px;
 }
 
