@@ -1,9 +1,7 @@
 <template>
   <div class="main">
     <TopNav title="填写教师信息"></TopNav>
-
     <div style="margin-top: 20px;"></div>
-
     <div style="padding: 0 10px;box-sizing: border-box;">
       <el-form :label-position="labelPosition" label-width="90px" :model="formLabelAlign">
         <el-form-item label="*学校名称：">

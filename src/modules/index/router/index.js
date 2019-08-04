@@ -2,9 +2,19 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-// teacher-info class-create
+// teacher-info class-create 
 export default new Router({
   routes: [
+    {
+      path: '/',
+      name: 'teacher-login-pwd',
+      component: () => import('../views/teacher/teacher-login-pwd') // 路由懒加载
+    },
+    {
+      path: '/teacher-home',
+      name: 'teacher-home',
+      component: () => import('../views/teacher/teacher-home') // 路由懒加载
+    },
     {
       path: '/',
       name: 'class-create',
