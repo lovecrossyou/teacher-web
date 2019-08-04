@@ -17,7 +17,7 @@
     </div>
 
 
-    <div class="btn">邀请加入</div>
+    <div class="btn">加入</div>
   </div>
 </template>
 
@@ -45,6 +45,7 @@ export default {
 }
 
 .logo {
+  margin-top: 14px;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -118,5 +119,6 @@ export default {
   line-height: 43px;
   text-align: center;
   margin: 73px 0px;
+  font-size: 18px;
 }
 </style>
