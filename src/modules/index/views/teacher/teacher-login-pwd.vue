@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <img class="logo" alt />
+    <img class="logo" :src="logo" alt />
     <div style="margin-top:14px;">中小学教师邦</div>
 
     <div class="desc">中小学教师邦是一款智能的协助老师更好的布置 作业，督促孩子学习的软件。中小学教师邦是一 款智能的协助老师更好的布置作业</div>
@@ -11,16 +11,27 @@
       <div class="line"></div>
 
       <div class="box-pwd-wrapper">
-        <div class="icon"></div>
+        <img :src="lock_icon" class="lock_icon" />
         <el-input type="text" placeholder="请输入班级密码"></el-input>
       </div>
     </div>
+
+
+    <div class="btn">邀请加入</div>
   </div>
 </template>
 
 <script>
-//  import logo from "../../../static/home/logo.png"
-export default {};
+import logo from "../../../../../static/home/logo.png";
+import lock_icon from "../../../../../static/home/lock.png";
+export default {
+  data() {
+    return {
+      logo,
+      lock_icon
+    };
+  }
+};
 </script>
 
 <style scoped>
@@ -36,7 +47,6 @@ export default {};
 .logo {
   width: 70px;
   height: 70px;
-  background: #005834;
   border-radius: 50%;
 }
 
@@ -55,7 +65,7 @@ export default {};
   background: #f8f8f8;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  border: solid 2px #e1e1ee;
+  border: solid 1px #e1e1ee;
 
   display: flex;
   flex-direction: column;
@@ -78,7 +88,13 @@ export default {};
 .icon {
   width: 30px;
   height: 30px;
-  background: #7d7d7f;
+  /* background: #7d7d7f; */
+  margin-right: 19px;
+}
+
+.lock_icon {
+  width: 17px;
+  height: 19px;
   margin-right: 19px;
 }
 
@@ -91,5 +107,16 @@ export default {};
   padding: 0 30px;
   box-sizing: border-box;
   margin-top: 30px;
+}
+
+.btn {
+  width: 300px;
+  height: 43px;
+  background: rgba(0, 87, 55, 1);
+  border-radius: 4px;
+  color: #ffffff;
+  line-height: 43px;
+  text-align: center;
+  margin: 73px 0px;
 }
 </style>
