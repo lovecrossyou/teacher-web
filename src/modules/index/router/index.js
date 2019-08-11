@@ -7,6 +7,16 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'class-edit',
+      component: () => import('../views/class/class-edit') // 路由懒加载
+    },
+    {
+      path: '/class-list',
+      name: 'class-list',
+      component: () => import('../views/class/class-list') // 路由懒加载
+    },
+    {
+      path: '/teacher-login-pwd',
       name: 'teacher-login-pwd',
       component: () => import('../views/teacher/teacher-login-pwd') // 路由懒加载
     },
@@ -16,7 +26,7 @@ export default new Router({
       component: () => import('../views/teacher/teacher-home') // 路由懒加载
     },
     {
-      path: '/',
+      path: '/class-create',
       name: 'class-create',
       component: () => import('../views/class/class-create') // 路由懒加载
     },

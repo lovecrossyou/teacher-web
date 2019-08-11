@@ -1,18 +1,18 @@
 <template>
   <div class="nav-wrapper">
     <slot name="left">
-       <div></div>
-    </slot>
-    <div class="title">{{title}}</div>
-    <slot name="right">
       <div></div>
     </slot>
+    <div class="title">{{title}}</div>
+    <div>
+      <slot name="right"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props:['title']
+  props: ["title"]
 };
 </script>
 
@@ -28,7 +28,7 @@ export default {
   justify-content: space-between;
 }
 
-.title{
+.title {
   color: #ffffff;
 }
 </style>

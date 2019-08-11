@@ -17,7 +17,7 @@
     </div>
 
 
-    <div class="btn">加入</div>
+    <div class="btn" @click="signin">加入</div>
   </div>
 </template>
 
@@ -30,6 +30,11 @@ export default {
       logo,
       lock_icon
     };
+  },
+  methods:{
+    signin(){
+      this.$router.push('/teacher-info')
+    }
   }
 };
 </script>
@@ -39,7 +44,6 @@ export default {
   display: flex;
   height: 100%;
   flex-direction: column;
-  /* justify-content: flex-start; */
   align-items: center;
   background: #ffffff;
 }

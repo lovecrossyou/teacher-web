@@ -1,44 +1,20 @@
 <template>
   <div class="main">
-    <TopNav title="填写教师信息"></TopNav>
+    <TopNav title="编辑班级"></TopNav>
     <div style="margin-top: 20px;"></div>
     <div style="padding: 0 10px;box-sizing: border-box;">
       <el-form :label-position="labelPosition" label-width="90px" :model="formLabelAlign">
-        <el-form-item label="*学校名称：">
-          <el-input v-model="formLabelAlign.name"></el-input>
+        <el-form-item label="学校名称：">
+          <el-input v-model="formLabelAlign.name" placeholder="北京市中学"></el-input>
         </el-form-item>
-        <el-form-item label="*班级名称：">
-          <el-input v-model="formLabelAlign.region"></el-input>
+        <el-form-item label="班级名称：">
+          <el-input v-model="formLabelAlign.region" placeholder="初一(1)班"></el-input>
         </el-form-item>
-        <el-form-item label="*姓名：">
-          <el-input v-model="formLabelAlign.type"></el-input>
+        <el-form-item label="班级描述：">
+          <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textarea">></el-input>
         </el-form-item>
-
-        <!-- 性别 年龄 手机号码 任课教师 -->
-        <el-form-item label="性别：">
-          <el-radio-group v-model="radio">
-            <el-radio v-model="radio" label="1">男</el-radio>
-            <el-radio v-model="radio" label="2">女</el-radio>
-          </el-radio-group>
-        </el-form-item>
-
-        <el-form-item label="年龄：">
-          <el-input v-model="formLabelAlign.region"></el-input>
-        </el-form-item>
-
-        <el-form-item label="手机号码：">
-          <el-input type="number" v-model="formLabelAlign.region"></el-input>
-        </el-form-item>
-
-        <el-form-item label="任教科目："></el-form-item>
-        <el-checkbox-group class="checkbox-wrapper" v-model="checkList">
-          <div style="width:40%; height:40px;" v-for="(c,index) in classes" :key="index">
-            <el-checkbox :label="c"></el-checkbox>
-          </div>
-        </el-checkbox-group>
       </el-form>
     </div>
-
 
     <div class="footer">
       <div class="footer-btn btn-save" @click="saveInfo">保存</div>
@@ -54,7 +30,6 @@ export default {
   },
   data() {
     return {
-    
       classes: [
         "语文",
         "数学",
@@ -81,8 +56,8 @@ export default {
     handleChange(value) {
       console.log(value);
     },
-    saveInfo(){
-      this.$router.push('/class-create')
+    saveInfo() {
+      this.$router.push("/class-create");
     }
   }
 };
