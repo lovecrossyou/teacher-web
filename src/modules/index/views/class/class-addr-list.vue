@@ -8,7 +8,7 @@
       </template>
     </TopNav>
     <div style="width:100%;">
-      <ClassItem logo="师" title="初一(1)班教师">
+      <ClassItem logo="师" title="初一(1)班教师" v-on:goTeacher="goTeacher">
         <template v-slot:right>
           <img class="qrcode" src="http://qnimage.xiteng.com/qrcode-default.jpg" alt />
         </template>
@@ -34,6 +34,9 @@ export default {
   methods: {
     createCls() {
       this.$router.push("/class-create");
+    },
+    goTeacher(){
+      this.$router.push("/teacher-list");
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="class-item">
+  <div class="class-item" @click="itemClick">
     <div class="item-wrapper">
       <slot name="left">
         <div class="item-logo">{{logoName}}</div>
@@ -19,11 +19,17 @@
 
 <script>
 export default {
-  props: ["logo", "title", "desc"],
+  props: ["logo", "title", "desc",''],
   computed: {
     logoName() {
       if (!this.logo) return "班";
       return this.logo;
+    }
+  },
+  methods:{
+    itemClick(){
+      console.log('xxxxx');
+      this.$emit('goTeacher')
     }
   }
 };
