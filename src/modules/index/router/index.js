@@ -2,11 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-// teacher-info class-create 
+// teacher-info class-create  class-addr-list
 export default new Router({
   routes: [
     {
       path: '/',
+      name: 'class-addr-list',
+      component: () => import('../views/class/class-addr-list') // 路由懒加载
+    },
+    {
+      path: '/class-edit',
       name: 'class-edit',
       component: () => import('../views/class/class-edit') // 路由懒加载
     },

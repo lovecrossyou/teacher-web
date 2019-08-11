@@ -1,27 +1,52 @@
 <template>
-  <div >
+  <div class="class-item">
     <div class="item-wrapper">
-      <div class="item-logo">班</div>
+      <div class="item-logo">{{logoName}}</div>
       <div class="item-content">
-        <div class="title">初一 班</div>
-        <div class="desc">北京市中学</div>
+        <div class="title">{{title}}</div>
+        <div class="desc">{{desc}}</div>
       </div>
     </div>
+    <div>
+      <slot name="right"></slot>
+    </div>
+    <div class="line"/>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["logo", "title", "desc"],
+  computed: {
+    logoName() {
+      if (!this.logo) return "班";
+      return this.logo;
+    }
+  }
+};
 </script>
 
 <style  scoped>
+.class-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.line{
+  position: absolute;
+  bottom: 0;
+  height: 1px;
+  width: 100%;
+  background: #e1e1e1;
+}
 .item-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
   height: 50px;
   width: 100%;
-  border-bottom: solid 1px #e1e1e1;
 }
 
 .item-logo {

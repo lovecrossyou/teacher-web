@@ -1,17 +1,23 @@
 <template>
   <div class="main">
-    <TopNav title="班级管理">
+    <TopNav title="初一(1)班">
       <template v-slot:right>
         <div class="right-nav-wrapper">
-          <div class="right-nav-item" @click="createCls">创建班级</div>
-          <div class="right-nav-item">消息认定</div>
+          <div class="right-nav-item" @click="createCls">设置</div>
         </div>
       </template>
     </TopNav>
     <div style="width:100%;">
-      <ClassItem title="初一(1)班" desc="北京市中学" />
-      <ClassItem title="初一(1)班" desc="北京市中学" />
-      <ClassItem title="初一(1)班" desc="北京市中学" />
+      <ClassItem logo="师" title="初一(1)班教师">
+        <template v-slot:right>
+          <img class="qrcode" src="http://qnimage.xiteng.com/qrcode-default.jpg" alt />
+        </template>
+      </ClassItem>
+      <ClassItem logo="生" title="初一(1)班">
+        <template v-slot:right>
+          <img class="qrcode" src="http://qnimage.xiteng.com/qrcode-default.jpg" alt />
+        </template>
+      </ClassItem>
     </div>
   </div>
 </template>
@@ -19,6 +25,8 @@
 <script>
 import TopNav from "@/components/top-nav.vue";
 import ClassItem from "./components/class-item";
+
+import qrcode from "@static/class/qrcode.png";
 export default {
   components: {
     TopNav,
@@ -57,5 +65,11 @@ export default {
   color: #ffffff;
   background: #0aa318;
   margin-right: 18px;
+}
+
+.qrcode {
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
 }
 </style>
