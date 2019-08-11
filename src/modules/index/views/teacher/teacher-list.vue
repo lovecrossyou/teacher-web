@@ -1,21 +1,20 @@
 <template>
   <div class="main">
-    <TopNav title="初一(1)班">
-      <template v-slot:right>
-        <div class="right-nav-wrapper">
-          <div class="right-nav-item" @click="createCls">设置</div>
-        </div>
-      </template>
-    </TopNav>
+    <TopNav title="初一(1)班老师"></TopNav>
+
+    <el-input placeholder="搜索" v-model="input3" class="input-with-select">
+      <el-button slot="append" icon="el-icon-search"></el-button>
+    </el-input>
+
     <div style="width:100%;">
-      <ClassItem logo="师" title="初一(1)班教师">
-        <template v-slot:right>
-          <img class="qrcode" src="http://qnimage.xiteng.com/qrcode-default.jpg" alt />
+      <ClassItem title="王老师（班主任）" desc="美术 / 舞蹈">
+        <template v-slot:left>
+          <img class="logo" src="http://qnimage.xiteng.com/logo.jpeg" alt />
         </template>
       </ClassItem>
-      <ClassItem logo="生" title="初一(1)班">
-        <template v-slot:right>
-          <img class="qrcode" src="http://qnimage.xiteng.com/qrcode-default.jpg" alt />
+      <ClassItem title="李老师" desc="美术 / 舞蹈">
+        <template v-slot:left>
+          <img class="logo" src="http://qnimage.xiteng.com/logo_144.png" alt />
         </template>
       </ClassItem>
     </div>
@@ -25,7 +24,6 @@
 <script>
 import TopNav from "@/components/top-nav.vue";
 import ClassItem from "@/components/class-item";
-import qrcode from "@static/home/lock.png";
 export default {
   components: {
     TopNav,
@@ -64,6 +62,12 @@ export default {
   color: #ffffff;
   background: #0aa318;
   margin-right: 18px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-left: 20px;
 }
 
 .qrcode {

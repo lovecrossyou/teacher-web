@@ -18,7 +18,7 @@
 
 <script>
 import TopNav from "@/components/top-nav.vue";
-import ClassItem from "./components/class-item";
+import ClassItem from "@/components/class-item";
 export default {
   components: {
     TopNav,

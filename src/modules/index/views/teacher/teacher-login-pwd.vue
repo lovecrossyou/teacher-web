@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import logo from "../../../../../static/home/logo.png";
-import lock_icon from "../../../../../static/home/lock.png";
+import logo from "@static/home/logo.png";
+import lock_icon from "@static/home/lock.png";
 export default {
   data() {
     return {
