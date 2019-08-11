@@ -2,7 +2,7 @@
   <div class="main">
     <TopNav title="初一(1)班老师"></TopNav>
 
-    <el-input placeholder="搜索" v-model="input3" class="input-with-select">
+    <el-input placeholder="搜索" v-model="seatch_input" class="input-with-select">
       <el-button slot="append" icon="el-icon-search"></el-button>
     </el-input>
 
@@ -25,6 +25,11 @@
 import TopNav from "@/components/top-nav.vue";
 import ClassItem from "@/components/class-item";
 export default {
+  data(){
+    return {
+      seatch_input:''
+    }
+  },
   components: {
     TopNav,
     ClassItem
