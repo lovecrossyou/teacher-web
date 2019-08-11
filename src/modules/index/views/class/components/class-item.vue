@@ -1,7 +1,10 @@
 <template>
   <div class="class-item">
     <div class="item-wrapper">
-      <div class="item-logo">{{logoName}}</div>
+      <slot name="left">
+        <div class="item-logo">{{logoName}}</div>
+      </slot>
+
       <div class="item-content">
         <div class="title">{{title}}</div>
         <div class="desc">{{desc}}</div>
@@ -10,7 +13,7 @@
     <div>
       <slot name="right"></slot>
     </div>
-    <div class="line"/>
+    <div class="line" />
   </div>
 </template>
 
@@ -34,7 +37,7 @@ export default {
   position: relative;
 }
 
-.line{
+.line {
   position: absolute;
   bottom: 0;
   height: 1px;

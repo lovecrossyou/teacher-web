@@ -2,9 +2,14 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-// teacher-info class-create  class-addr-list
+// teacher-info class-create  class-addr-list student-parents-list
 export default new Router({
   routes: [
+    {
+      path: '/student-parents-list',
+      name: 'student-parents-list',
+      component: () => import('../views/class/student-parents-list') // 路由懒加载
+    },
     {
       path: '/',
       name: 'class-addr-list',
