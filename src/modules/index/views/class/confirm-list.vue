@@ -8,6 +8,7 @@
       </template>
     </TopNav>
     <div class="content">
+      <div class="top-tips">共有1条审核</div>
       <el-collapse v-model="activeNames" @change="handleChange">
         <el-collapse-item title="老师" name="1">
           <ConfirmItem></ConfirmItem>
@@ -60,6 +61,15 @@ export default {
   width: 100%;
   padding: 0 20px;
   box-sizing: border-box;
+}
+
+.top-tips{
+  width: 100%;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  
+  
 }
 
 .right-nav-wrapper {
