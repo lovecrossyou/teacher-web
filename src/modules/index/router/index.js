@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/confirm-list',
+      name: 'confirm-list',
+      component: () => import('../views/class/confirm-list') // 路由懒加载
+    },
+    {
       path: '/teacher-list',
       name: 'teacher-list',
       component: () => import('../views/teacher/teacher-list') // 路由懒加载
