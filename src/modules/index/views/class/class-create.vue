@@ -44,8 +44,10 @@
 
 <script>
 import { regionData } from "element-china-area-data";
-
+import {weChatOauth} from "@/api/getData";
 import TopNav from "@/components/top-nav.vue";
+import {mapActions} from 'vuex';
+
 export default {
   data() {
     return {
@@ -62,7 +64,15 @@ export default {
   components: {
     TopNav
   },
+  mounted(){
+    const params = {
+        code:'',
+        wechatType:0
+      }
+    this.weChatOauth(params);
+  },
   methods: {
+    ...mapActions('login',['weChatOauth']),
     goTeacher() {
       this.$router.push("/teacher-info");
     },

@@ -11,7 +11,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://127.0.0.1:7001', // 你接口的域名
+        target: 'http://www.bluefing.com/jsb-api/v1', // 你接口的域名
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

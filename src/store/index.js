@@ -1,28 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { getAdminInfo } from '@/api/getData'
-
+import login from './modules/login'
 
 Vue.use(Vuex)
 
 const state = {
-        lottery: {
-                home_team: "",
-                guest_team: "",
-                game_type: "",
-                game_result: "",
-                picture_bifa: "",
-                picture_jc: "",
-                picture_renqi: "",
-                picture_pankou_zhuke: "",
-                picture_pankou_shengjiang: "",
-                picture_peilv: "",
-                picture_gailv_zhuan: "",
-                picture_peifu_control: "",
-                picture_10: "",
-                picture_10_duike: "",
-                picture_taidu: ""
-        }
 }
 
 const mutations = {
@@ -42,7 +25,7 @@ const actions = {
 }
 
 export default new Vuex.Store({
-        modules: {},
+        modules: { login },
         state,
         actions,
         mutations,

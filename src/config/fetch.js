@@ -1,77 +1,51 @@
-import { baseUrl } from './env'
+import axios from 'axios'
+// create an axios instance
+const service = axios.create({
+	baseURL: 'http://www.bluefing.com/jsb-api/v1'
+	// withCredentials: true, // send cookies when cross-domain requests
+	// timeout: 5000 // request timeout
+})
 
-export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
-	type = type.toUpperCase();
-	url = baseUrl + url;
-
-	if (type == 'GET') {
-		let dataStr = ''; //数据拼接字符串
-		Object.keys(data).forEach(key => { 
-			dataStr += key + '=' + data[key] + '&';
-		})
-
-		if (dataStr !== '') {
-			dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'));
-			url = url + '?' + dataStr;
-		}
+// request interceptor
+service.interceptors.request.use(
+	request => {
+		// do something before request is sent
+		const token = localStorage.getItem('token');
+		request.headers['token'] = token;
+		return request
+	},
+	error => {
+		// do something with request error
+		console.log('request interceptor ', error) // for debug
+		return Promise.reject(error)
 	}
+)
 
-	if (window.fetch && method == 'fetch') {
-		let requestConfig = {
-			credentials: 'include',
-			method: type,
-			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
-			},
-			mode: "cors",
-			cache: "force-cache"
+// response interceptor
+service.interceptors.response.use(
+  /**
+   * If you want to get http information such as headers or status
+   * Please return  response => response
+  */
+
+  /**
+   * Determine the request status by custom code
+   * Here is just an example
+   * You can also judge the status by HTTP Status Code
+   */
+	response => {
+		console.log('response res #### ', response)
+		// if the custom code is not 20000, it is judged as an error.
+		if (response.status !== 200) {
+			return Promise.reject(new Error(status.message || 'Error'))
+		} else {
+			return response.data
 		}
-
-		if (type == 'POST') {
-			Object.defineProperty(requestConfig, 'body', {
-				value: JSON.stringify(data)
-			})
-		}
-		
-		try {
-			const response = await fetch(url, requestConfig);
-			const responseJson = await response.json();
-			return responseJson
-		} catch (error) {
-			throw new Error(error)
-		}
-	} else {
-		return new Promise((resolve, reject) => {
-			let requestObj;
-			if (window.XMLHttpRequest) {
-				requestObj = new XMLHttpRequest();
-			} else {
-				requestObj = new ActiveXObject;
-			}
-
-			let sendData = '';
-			if (type == 'POST') {
-				sendData = JSON.stringify(data);
-			}
-
-			requestObj.open(type, url, true);
-			requestObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-			requestObj.send(sendData);
-
-			requestObj.onreadystatechange = () => {
-				if (requestObj.readyState == 4) {
-					if (requestObj.status == 200) {
-						let obj = requestObj.response
-						if (typeof obj !== 'object') {
-							obj = JSON.parse(obj);
-						}
-						resolve(obj)
-					} else {
-						reject(requestObj)
-					}
-				}
-			}
-		})
+	},
+	error => {
+		console.log('err' + error) // for debug
+		return Promise.reject(error)
 	}
-}
+)
+
+export default service

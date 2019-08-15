@@ -1,12 +1,13 @@
-import fetch from '@/config/fetch'
+import request from '@/config/fetch'
 
 
-export const addLottery = data=> fetch('/lottery/add',data,'POST');
-export const listLottery = ()=> fetch('/lottery/list');
-export const updateLottery = data=> fetch('/lottery/update',data,'POST');
+export const addLottery = data => request('/lottery/add', data, 'POST');
+export const listLottery = () => request('/lottery/list');
+export const updateLottery = data => request('/lottery/update', data, 'POST');
 
 
-export const addCategoryM = data=> fetch('/category_m/add',data,'POST');
-export const listCategoryM = data=> fetch('/category_m/list');
-export const delCategoryM = id=> fetch('/category_m/del/'+id,'','DELETE');
+export const addCategoryM = data => request('/category_m/add', data, 'POST');
+export const listCategoryM = data => request('/category_m/list');
+export const delCategoryM = id => request('/category_m/del/' + id, '', 'DELETE');
 
+export const weChatOauth = data => request.post('/common/wx/weChatOauth',data)

@@ -19,6 +19,10 @@
         </template>
       </ClassItem>
     </div>
+    <a
+      href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+      class="btn-login"
+    >授权登陆</a>
   </div>
 </template>
 
@@ -27,15 +31,19 @@ import TopNav from "@/components/top-nav.vue";
 import ClassItem from "@/components/class-item";
 import qrcode from "@static/home/lock.png";
 export default {
+  data() {
+    return {};
+  },
   components: {
     TopNav,
     ClassItem
   },
   methods: {
+    login() {},
     createCls() {
       this.$router.push("/class-create");
     },
-    goTeacher(){
+    goTeacher() {
       this.$router.push("/teacher-list");
     }
   }
@@ -43,6 +51,13 @@ export default {
 </script>
 
 <style scoped>
+.btn-login {
+  width: 90px;
+  height: 40px;
+  background-color: aquamarine;
+  line-height: 40px;
+  text-align: center;
+}
 .main {
   width: 100%;
   display: flex;
