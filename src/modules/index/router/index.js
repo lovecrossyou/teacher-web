@@ -6,6 +6,11 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/authredirect',
+      name: 'authredirect',
+      component: () => import('../views/auth/authredirect') // 路由懒加载
+    },
+    {
       path: '/confirm-list',
       name: 'confirm-list',
       component: () => import('../views/class/confirm-list') // 路由懒加载
@@ -21,7 +26,7 @@ export default new Router({
       component: () => import('../views/class/student-parents-list') // 路由懒加载
     },
     {
-      path: '/',
+      path: '/class-addr-list',
       name: 'class-addr-list',
       component: () => import('../views/class/class-addr-list') // 路由懒加载
     },
@@ -46,7 +51,7 @@ export default new Router({
       component: () => import('../views/teacher/teacher-home') // 路由懒加载
     },
     {
-      path: '/class-create',
+      path: '/',
       name: 'class-create',
       component: () => import('../views/class/class-create') // 路由懒加载
     },

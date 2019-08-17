@@ -1,4 +1,4 @@
-import { weChatOauth } from "@/api/getData";
+import { weChatOauth, saveUserOrUpdate } from "@/api/getData";
 
 
 const state = {
@@ -14,7 +14,9 @@ const actions = {
     } catch (err) {
       console.log(err.message)
     }
-  }
+  },
+
+  
 }
 
 export default {

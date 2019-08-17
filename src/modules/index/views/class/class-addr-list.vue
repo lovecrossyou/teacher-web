@@ -20,7 +20,7 @@
       </ClassItem>
     </div>
     <a
-      href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+      v-bind:href="fullUrl"
       class="btn-login"
     >授权登陆</a>
   </div>
@@ -30,9 +30,19 @@
 import TopNav from "@/components/top-nav.vue";
 import ClassItem from "@/components/class-item";
 import qrcode from "@static/home/lock.png";
+const REDIRECT_URI = 'http://e24aab0b.ngrok.io/#/authredirect';
+
 export default {
   data() {
-    return {};
+    return {
+      authUrl:'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&response_type=code&scope=snsapi_userinfo&state=STATE',
+      redirectUrl:'&redirect_uri='+REDIRECT_URI,
+    };
+  },
+  computed:{
+    fullUrl(){
+      return this.authUrl + this.redirectUrl;
+    }
   },
   components: {
     TopNav,
@@ -45,6 +55,9 @@ export default {
     },
     goTeacher() {
       this.$router.push("/teacher-list");
+    },
+    goAuth(){
+      
     }
   }
 };

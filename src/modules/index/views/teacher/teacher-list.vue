@@ -34,6 +34,10 @@ export default {
     TopNav,
     ClassItem
   },
+  mounted(){
+     const code = this.$route.query.code;
+      console.log('code ### ', code);
+  },
   methods: {
     createCls() {
       this.$router.push("/class-create");

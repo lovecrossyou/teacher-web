@@ -3,58 +3,63 @@
     <TopNav title="填写教师信息"></TopNav>
     <div style="margin-top: 20px;"></div>
     <div style="padding: 0 10px;box-sizing: border-box;">
-      <el-form :label-position="labelPosition" label-width="90px" :model="formLabelAlign">
-        <el-form-item label="*学校名称：">
-          <el-input v-model="formLabelAlign.name"></el-input>
+      <el-form :label-position="labelPosition" label-width="90px" :model="form">
+        <!-- <el-form-item label="*学校名称：">
+          <el-input v-model="form.school"></el-input>
         </el-form-item>
         <el-form-item label="*班级名称：">
-          <el-input v-model="formLabelAlign.region"></el-input>
-        </el-form-item>
+          <el-input v-model="form.class"></el-input>
+        </el-form-item>-->
         <el-form-item label="*姓名：">
-          <el-input v-model="formLabelAlign.type"></el-input>
+          <el-input v-model="form.name"></el-input>
         </el-form-item>
 
         <!-- 性别 年龄 手机号码 任课教师 -->
         <el-form-item label="性别：">
-          <el-radio-group v-model="radio">
+          <el-radio-group v-model="form.sex">
             <el-radio v-model="radio" label="1">男</el-radio>
             <el-radio v-model="radio" label="2">女</el-radio>
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="年龄：">
-          <el-input v-model="formLabelAlign.region"></el-input>
+        <el-form-item label="生日：">
+          <el-date-picker
+            value-format="yyyy-MM-dd"
+            v-model="form.birthday"
+            type="date"
+            placeholder="选择日期"
+          ></el-date-picker>
         </el-form-item>
 
         <el-form-item label="手机号码：">
-          <el-input type="number" v-model="formLabelAlign.region"></el-input>
+          <el-input type="phone" v-model="form.phone"></el-input>
         </el-form-item>
 
         <el-form-item label="任教科目："></el-form-item>
         <el-checkbox-group class="checkbox-wrapper" v-model="checkList">
-          <div style="width:40%; height:40px;" v-for="(c,index) in classes" :key="index">
+          <div style="width:40%; height:40px;" v-for="(c,index) in subjectData" :key="index">
             <el-checkbox :label="c"></el-checkbox>
           </div>
         </el-checkbox-group>
       </el-form>
     </div>
 
-
     <div class="footer">
-      <div class="footer-btn btn-save" @click="saveInfo">保存</div>
-      <div class="footer-btn btn-cancel">取消</div>
+      <el-button :loading="loading" class="btn-save" @click="saveInfo">保存</el-button>
+      <!-- <div class="footer-btn btn-cancel">取消</div> -->
     </div>
   </div>
 </template>
 <script>
 import TopNav from "@/components/top-nav.vue";
+import { mapActions, mapState } from "vuex";
+
 export default {
   components: {
     TopNav
   },
   data() {
     return {
-    
       classes: [
         "语文",
         "数学",
@@ -70,19 +75,39 @@ export default {
       checkList: [],
       radio: 2,
       labelPosition: "left",
-      formLabelAlign: {
+      form: {
         name: "",
-        region: "",
-        type: ""
-      }
+        age: "",
+        class: "",
+        phone: "",
+        birthday: "",
+        subject: ""
+      },
+      loading: false
     };
   },
+  computed: {
+    ...mapState("schoolclass", ["subjectData"])
+  },
+  mounted() {
+    this.subjectList();
+  },
   methods: {
+    ...mapActions("teacher", ["saveUserOrUpdate"]),
+    ...mapActions("schoolclass", ["subjectList"]),
     handleChange(value) {
       console.log(value);
     },
-    saveInfo(){
-      this.$router.push('/class-create')
+    saveInfo() {
+      console.log(this.form);
+      this.loading = true;
+      this.form.subject = this.checkList.reduce(
+        (pre, curr) => pre + ";" + curr
+      );
+      this.saveUserOrUpdate(this.form, () => {
+        this.$router.push("/");
+        this.loading = false;
+      });
     }
   }
 };
@@ -123,6 +148,7 @@ export default {
 
 .btn-save {
   background-color: #005834;
+  color: #ffffff;
 }
 
 .btn-cancel {
