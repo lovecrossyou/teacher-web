@@ -3,7 +3,7 @@
     <TopNav title="填写教师信息"></TopNav>
     <div style="margin-top: 20px;"></div>
     <div style="padding: 0 10px;box-sizing: border-box;">
-      <el-form :label-position="labelPosition" label-width="90px" :model="form">
+      <el-form :label-position="labelPosition" label-width="90px">
         <!-- <el-form-item label="*学校名称：">
           <el-input v-model="form.school"></el-input>
         </el-form-item>
@@ -17,8 +17,8 @@
         <!-- 性别 年龄 手机号码 任课教师 -->
         <el-form-item label="性别：">
           <el-radio-group v-model="form.sex">
-            <el-radio v-model="radio" label="1">男</el-radio>
-            <el-radio v-model="radio" label="2">女</el-radio>
+            <el-radio :label="1" >男</el-radio>
+            <el-radio :label="2" >女</el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -60,23 +60,12 @@ export default {
   },
   data() {
     return {
-      classes: [
-        "语文",
-        "数学",
-        "英语",
-        "物理",
-        "化学",
-        "生物",
-        "历史",
-        "地理",
-        "音乐",
-        "形体"
-      ],
       checkList: [],
       radio: 2,
       labelPosition: "left",
       form: {
         name: "",
+        sex:'1',
         age: "",
         class: "",
         phone: "",
