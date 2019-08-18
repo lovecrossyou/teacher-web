@@ -80,7 +80,6 @@ export default {
       wechatType: 0
     };
     this.weChatOauth(params);
-    this.subjectList();
   },
   methods: {
     ...mapActions("login", ["weChatOauth"]),
@@ -91,6 +90,9 @@ export default {
     handleChange(value) {},
     createClass() {
       console.log("formData ", this.formData);
+      this.formData.cb = ()=>{
+         console.log('createClass');
+      }
       this.saveClass(this.formData);
       return;
       this.$router.push("/class-mgr");

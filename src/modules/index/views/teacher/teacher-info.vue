@@ -17,8 +17,8 @@
         <!-- 性别 年龄 手机号码 任课教师 -->
         <el-form-item label="性别：">
           <el-radio-group v-model="form.sex">
-            <el-radio :label="1" >男</el-radio>
-            <el-radio :label="2" >女</el-radio>
+            <el-radio :label="1">男</el-radio>
+            <el-radio :label="2">女</el-radio>
           </el-radio-group>
         </el-form-item>
 
@@ -65,7 +65,7 @@ export default {
       labelPosition: "left",
       form: {
         name: "",
-        sex:'1',
+        sex: "1",
         age: "",
         class: "",
         phone: "",
@@ -93,10 +93,11 @@ export default {
       this.form.subject = this.checkList.reduce(
         (pre, curr) => pre + ";" + curr
       );
-      this.saveUserOrUpdate(this.form, () => {
+      this.form.cb = () => {
         this.$router.push("/");
         this.loading = false;
-      });
+      };
+      this.saveUserOrUpdate(this.form);
     }
   }
 };

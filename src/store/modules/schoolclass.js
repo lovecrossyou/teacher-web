@@ -11,10 +11,10 @@ const state = {
 }
 
 const actions = {
-  async saveClass({ commit }, params) {
+  async saveClass({ commit }, params,cb) {
     try {
       const res = await saveClass(params);
-      const { token } = res.data;
+      params.cb && params.cb();
     } catch (err) {
       console.log(err.message)
     }

@@ -17,10 +17,11 @@ const actions = {
     }
   },
 
-  async saveUserOrUpdate({commit}, params,cb){
+  async saveUserOrUpdate({commit}, params){
     try {
       const res = await saveUserOrUpdate(params);
-      cb && cb();
+      params.cb && params.cb();
+
     } catch (err) {
       cb && cb();
     }
