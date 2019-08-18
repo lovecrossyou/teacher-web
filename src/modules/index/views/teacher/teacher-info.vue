@@ -88,13 +88,22 @@ export default {
       console.log(value);
     },
     saveInfo() {
-      console.log(this.form);
+      if (this.checkList.length == 0) {
+        this.$message({
+          message: "请选择科目",
+          type: "error"
+        });
+        return;
+      }
       this.loading = true;
       this.form.subject = this.checkList.reduce(
         (pre, curr) => pre + ";" + curr
       );
       this.form.cb = () => {
         this.$router.push("/");
+        this.loading = false;
+      };
+      this.form.err = () => {
         this.loading = false;
       };
       this.saveUserOrUpdate(this.form);

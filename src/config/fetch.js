@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Message } from 'element-ui';
 // create an axios instance
 const service = axios.create({
 	baseURL: 'http://www.bluefing.com/jsb-api/v1'
@@ -34,11 +35,21 @@ service.interceptors.response.use(
    * You can also judge the status by HTTP Status Code
    */
 	response => {
-		console.log('response res #### ', response)
-		// if the custom code is not 20000, it is judged as an error.
+		const { code, msg } = response.data;
 		if (response.status !== 200) {
+			Message({
+				message: msg,
+				type: 'error'
+			});
 			return Promise.reject(new Error(status.message || 'Error'))
 		} else {
+			if (code != 0) {
+				Message({
+					message:msg,
+					type: 'error'
+				});
+				return Promise.reject();
+			}
 			return response.data
 		}
 	},

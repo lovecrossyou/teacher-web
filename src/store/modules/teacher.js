@@ -21,9 +21,8 @@ const actions = {
     try {
       const res = await saveUserOrUpdate(params);
       params.cb && params.cb();
-
     } catch (err) {
-      cb && cb();
+      params.err && params.err();
     }
   }
 }

@@ -38,9 +38,9 @@
       <div class="teacher-item">教师名单上传</div>
     </div>
 
-    <div v-if="hasLogin" class="btn" @click="createClass">创建班级(已登陆)</div>
+    <el-button v-if="hasLogin" :loading="loading" class="btn" @click="createClass">创建班级(已登陆)</el-button>
     <div v-if="!hasLogin" class="btn">
-      <a href>创建班级（未登陆）</a>
+      <el-button @click="createClass" :loading="loading">创建班级（未登陆）</el-button>
     </div>
   </div>
 </template>
@@ -64,6 +64,7 @@ export default {
         classCode: "",
         summary: ""
       },
+      loading:false,
       hasLogin: true,
       authUrl:
         "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&response_type=code&scope=snsapi_userinfo&state=STATE",
@@ -73,7 +74,7 @@ export default {
   components: {
     TopNav
   },
- 
+
   mounted() {
     const params = {
       code: "",
@@ -90,12 +91,15 @@ export default {
     handleChange(value) {},
     createClass() {
       console.log("formData ", this.formData);
-      this.formData.cb = ()=>{
-         console.log('createClass');
-      }
+      this.loading = true;
+      this.formData.cb = () => {
+        this.loading = false;
+        this.$router.push("/class-mgr");
+      };
+      this.formData.err = () => {
+        this.loading = false;
+      };
       this.saveClass(this.formData);
-      return;
-      this.$router.push("/class-mgr");
     }
   }
 };
@@ -121,12 +125,10 @@ export default {
 }
 
 .btn {
-  width: 60%;
-  height: 43px;
   background: rgba(0, 87, 55, 1);
   border-radius: 4px;
   color: #ffffff;
-  line-height: 43px;
+  /* line-height: 43px; */
   text-align: center;
   margin: 40px auto;
 }
