@@ -8,7 +8,7 @@ module.exports = {
   dev: {
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/jsb-web',
     proxyTable: {
       '/api': {
         target: 'http://www.bluefing.com/jsb-api/v1', // 你接口的域名
