@@ -38,9 +38,9 @@
       <div class="teacher-item">教师名单上传</div>
     </div>
 
-    <el-button v-if="hasLogin" :loading="loading" class="btn" @click="createClass">创建班级(已登陆)</el-button>
-    <div v-if="!hasLogin" class="btn">
-      <el-button @click="createClass" :loading="loading">创建班级（未登陆）</el-button>
+    <div class="footer">
+      <el-button v-if="hasLogin" :loading="loading" class="btn-el" @click="createClass">创建班级(已登陆)</el-button>
+      <a v-if="!hasLogin" class="btn" :href="authUrl">创建班级(已登陆)</a>
     </div>
   </div>
 </template>
@@ -49,8 +49,7 @@
 import { regionData } from "element-china-area-data";
 import { weChatOauth } from "@/api/getData";
 import TopNav from "@/components/top-nav.vue";
-import { mapActions, mapState } from "vuex";
-const REDIRECT_URI = "http://2d56bc9d.ngrok.io/#/authredirect";
+import { mapActions, mapState,mapGetters } from "vuex";
 
 export default {
   data() {
@@ -64,17 +63,16 @@ export default {
         classCode: "",
         summary: ""
       },
-      loading:false,
-      hasLogin: true,
-      authUrl:
-        "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&response_type=code&scope=snsapi_userinfo&state=STATE",
-      redirectUrl: "&redirect_uri=" + REDIRECT_URI
+      loading: false,
     };
   },
   components: {
     TopNav
   },
-
+  computed: {
+    ...mapState(["authUrl"]),
+    ...mapGetters(["hasLogin"])
+  },
   mounted() {
     const params = {
       code: "",
@@ -114,6 +112,14 @@ export default {
   justify-content: space-around;
 }
 
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  margin-bottom: 20px;
+}
+
 .teacher-item {
   width: 50px;
   background-color: #005834;
@@ -124,11 +130,20 @@ export default {
   padding: 10px 5px;
 }
 
+.btn-el {
+  background: rgba(0, 87, 55, 1);
+  border-radius: 4px;
+  color: #ffffff;
+  text-align: center;
+  margin: 40px auto;
+}
+
 .btn {
   background: rgba(0, 87, 55, 1);
   border-radius: 4px;
   color: #ffffff;
-  /* line-height: 43px; */
+  line-height: 43px;
+  height: 43px;
   text-align: center;
   margin: 40px auto;
 }
