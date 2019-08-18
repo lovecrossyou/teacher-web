@@ -73,7 +73,7 @@ export default new Router({
     {
       path: '/list',
       name: 'list',
-      component: () => import('../views/home') // 路由懒加载
+      component: () => import('../views/home/index') // 路由懒加载
     },
     {
       path: '/sort',
