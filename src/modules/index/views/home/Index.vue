@@ -8,7 +8,6 @@
 
 <script>
 import ManagerForm from './components/ManagerForm.vue'
-
 export default {
   name: 'app',
   components: {
