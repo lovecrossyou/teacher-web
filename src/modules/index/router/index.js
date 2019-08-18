@@ -71,11 +71,6 @@ export default new Router({
       component: () => import('../views/home/list') // 路由懒加载
     },
     {
-      path: '/list',
-      name: 'list',
-      component: () => import('../views/home/index') // 路由懒加载
-    },
-    {
       path: '/sort',
       name: 'sort',
       component: () => import('../views/home/sort') // 路由懒加载
