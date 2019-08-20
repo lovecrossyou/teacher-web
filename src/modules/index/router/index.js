@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 // teacher-info class-create  class-addr-list student-parents-list teacher-list
 export default new Router({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/authredirect',
