@@ -74,6 +74,7 @@ export default {
     ...mapGetters(["hasLogin"])
   },
   mounted() {
+    const code = this.$route.query.code;
     const params = {
       code: "",
       wechatType: 0
