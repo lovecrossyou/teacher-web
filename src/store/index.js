@@ -22,7 +22,7 @@ const mutations = {
 const getters = {
         hasLogin: state => {
                 const token = localStorage.getItem('token');
-                return token && token != null;
+                return token && token != null && token.length !== 0;
         }
 }
 
