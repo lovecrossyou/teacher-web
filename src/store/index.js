@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import login from './modules/login'
 import teacher from './modules/teacher'
 import schoolclass from './modules/schoolclass'
-const REDIRECT_URI = "http://www.bluefing.com:9090/jsb-web#wechat_redirect";
+const REDIRECT_URI = "http://www.bluefing.com:9099/index.html#";
 const authUrl = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx04ed87ff27f7385a&response_type=code&scope=snsapi_userinfo&state=STATE";
 const redirectUrl = "&redirect_uri=" + REDIRECT_URI;
 
