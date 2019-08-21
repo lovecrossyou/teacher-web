@@ -50,10 +50,10 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
     proxyTable: {
       '/api': {
-        target: 'http://www.bluefing.com/jsb-api/v1', // 你接口的域名
+        target: 'http://www.bluefing.com/jsb-api/v1', //
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
