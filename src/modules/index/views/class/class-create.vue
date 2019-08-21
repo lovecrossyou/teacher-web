@@ -76,7 +76,7 @@ export default {
   mounted() {
     const code = this.$route.query.code;
     const params = {
-      code: "",
+      code,
       wechatType: 0
     };
     this.weChatOauth(params);
