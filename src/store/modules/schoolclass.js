@@ -3,7 +3,7 @@ import { list } from "postcss";
 
 const state = {
   subjectData: [],
-  classList:[1,2,4,2,8]
+  classList:[]
 }
 
 const actions = {
