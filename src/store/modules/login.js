@@ -2,7 +2,7 @@ import { weChatOauth, saveUserOrUpdate } from "@/api/getData";
 
 
 const state = {
-
+  token:null
 }
 
 const actions = {
@@ -10,13 +10,15 @@ const actions = {
     try {
       const res = await weChatOauth(params);
       const { token } = res.data;
-      localStorage.setItem('token', token)
+      if (token && token.length != 0) {
+        localStorage.setItem('token', token)
+      }
     } catch (err) {
       console.log(err.message)
     }
   },
 
-  
+
 }
 
 export default {

@@ -1,7 +1,9 @@
-import { saveClass, subjectList } from "@/api/getData";
+import { saveClass, subjectList, listClass } from "@/api/getData";
+import { list } from "postcss";
 
 const state = {
-  subjectData:[]
+  subjectData: [],
+  classList:[1,2,4,2,8]
 }
 
 const actions = {
@@ -14,12 +16,21 @@ const actions = {
     }
   },
 
-  async subjectList({commit, state},data){
+  async subjectList({ commit, state }, data) {
     try {
       const res = await subjectList();
       state.subjectData = res.data;
     } catch (err) {
-      
+
+    }
+  },
+  //
+  async list({ commit, state }) {
+    try {
+      const res = await listClass();
+      state.classList = res.data;
+    } catch (err) {
+
     }
   }
 }

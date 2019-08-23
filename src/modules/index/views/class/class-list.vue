@@ -9,9 +9,7 @@
       </template>
     </TopNav>
     <div style="width:100%;">
-      <ClassItem title="初一(1)班" desc="北京市中学" />
-      <ClassItem title="初一(1)班" desc="北京市中学" />
-      <ClassItem title="初一(1)班" desc="北京市中学" />
+      <ClassItem v-for="(c,index) in classList" :key="index" :title="c.className" :desc="c.schoolName" />
     </div>
   </div>
 </template>
@@ -19,15 +17,24 @@
 <script>
 import TopNav from "@/components/top-nav.vue";
 import ClassItem from "@/components/class-item";
+import { mapActions, mapState, mapGetters } from "vuex";
+
 export default {
   components: {
     TopNav,
     ClassItem
   },
+  computed: {
+    ...mapState("schoolclass", ["classList"])
+  },
   methods: {
+    ...mapActions("schoolclass", ["list"]),
     createCls() {
       this.$router.push("/class-create");
     }
+  },
+  mounted() {
+    this.list();
   }
 };
 </script>

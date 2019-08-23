@@ -15,3 +15,4 @@ export const saveUserOrUpdate = data => request.post('/common/user/saveUserOrUpd
 
 export const saveClass = data => request.post('/wap/teacher/class/saveClass',data)
 export const subjectList = data => request.get('/common/subject/list',data)
+export const listClass = () => request.get('/wap/teacher/class/list')

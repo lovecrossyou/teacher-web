@@ -75,11 +75,16 @@ export default {
   },
   mounted() {
     const code = this.$route.query.code;
-    const params = {
+    if(code){
+      const params = {
       code,
       wechatType: 0
     };
     this.weChatOauth(params);
+    }
+  },
+  computed:{
+    ...mapState('login',['token'])
   },
   methods: {
     ...mapActions("login", ["weChatOauth"]),
